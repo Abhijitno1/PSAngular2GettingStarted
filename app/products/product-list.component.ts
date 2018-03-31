@@ -1,39 +1,24 @@
-import {Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Product } from '../shared/models/product';
+import Products from '../shared/data/products';
 
 @Component({
     selector: 'product-list',
     templateUrl: './app/products/product-list.component.html',
     styleUrls: ['./app/products/product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
     pageTitle: string= 'Products List';
-    imageWidth: number= 64;
-    imageHeight: number= 32;
+    imageWidth: number= 50;
+    imageMargin: number= 2;
     showImage: boolean= false;
     errorMessage: string= "";
+    products: Product[];
 
-    products: Product[]= [{
-        "productId": 1,
-        "productName": "Leaf Rake",
-        "productCode": "GDN-0011",
-        "releaseDate": "March 19, 2016",
-        "description": "Leaf rake with 48-inch wooden handle.",
-        "price": 19.95,
-        "starRating": 3.2,
-        "imageUrl": "assets/images/base_asterick_32.png"
-
-    },
-    {
-        "productId": 2,
-        "productName": "Garden Cart",
-        "productCode": "GDN-0023",
-        "releaseDate": "March 18, 2016",
-        "description": "15 gallon capacity rolling garden cart",
-        "price": 32.99,
-        "starRating": 4.2,
-        "imageUrl": "assets/images/base_bubble.png"
-    }];
+    ngOnInit() {
+        console.log('Abhijit: OnInit was called');
+        this.products= Products;
+    }
 
     toggleImage() {
         this.showImage = !this.showImage;

@@ -18,7 +18,7 @@
                     <tr *ngFor="let product of products">
                         <td><img *ngIf="showImage"
                             [src]="product.imageUrl" [title]="product.productName" 
-                            [style.width.px]="imageWidth" [style.height.px]="imageHeight" /></td>
+                            [style.width.px]="imageWidth" [style.margin.px]="imageMargin" /></td>
                         <td>{{product.productName | uppercase}}</td>
                         <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>
                         <td>{{product.releaseDate}}</td>
