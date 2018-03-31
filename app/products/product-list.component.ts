@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { User } from '../shared/models/user';
+import { Product } from '../shared/models/product';
 
 @Component({
     selector: 'product-list',
@@ -13,7 +13,7 @@ export class ProductListComponent {
     showImage: boolean= false;
     errorMessage: string= "";
 
-    products: any[]= [{
+    products: Product[]= [{
         "productId": 1,
         "productName": "Leaf Rake",
         "productCode": "GDN-0011",
