@@ -7,6 +7,9 @@ import { User } from '../shared/models/user';
 })
 export class ProductListComponent {
     pageTitle: string= 'Products List';
+    imageWidth: number= 64;
+    imageHeight: number= 32;
+
     products: any[]= [{
         "productId": 1,
         "productName": "Leaf Rake",
@@ -15,7 +18,8 @@ export class ProductListComponent {
         "description": "Leaf rake with 48-inch wooden handle.",
         "price": 19.95,
         "starRating": 3.2,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+        "imageUrl": "assets/images/base_asterick_32.png"
+
     },
     {
         "productId": 2,
@@ -25,6 +29,6 @@ export class ProductListComponent {
         "description": "15 gallon capacity rolling garden cart",
         "price": 32.99,
         "starRating": 4.2,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+        "imageUrl": "assets/images/base_bubble.png"
     }];
 }

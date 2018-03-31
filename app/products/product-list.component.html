@@ -3,9 +3,8 @@
         {{pageTitle}}
     </div>
     <div class="panel-body">
-        <h3>put product list table here</h3>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" *ngIf="products && products.length">
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -16,12 +15,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td>product.productName</td>
-                        <td>product.productCode</td>
-                        <td>product.releaseDate</td>
-                        <td>product.price</td>
+                    <tr *ngFor="let product of products">
+                        <td><img [src]="product.imageUrl" [title]="product.productName" 
+                            [style.width.px]="imageWidth" [style.height.px]="imageHeight" /></td>
+                        <td>{{product.productName}}</td>
+                        <td>{{product.productCode}}</td>
+                        <td>{{product.releaseDate}}</td>
+                        <td>{{product.price}}</td>
                     </tr>
                 </tbody>
             </table>
