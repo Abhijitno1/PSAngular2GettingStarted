@@ -3,12 +3,15 @@ import { User } from '../shared/models/user';
 
 @Component({
     selector: 'product-list',
-    templateUrl: './app/products/product-list.component.html'
+    templateUrl: './app/products/product-list.component.html',
+    styleUrls: ['./app/products/product-list.component.css']
 })
 export class ProductListComponent {
     pageTitle: string= 'Products List';
     imageWidth: number= 64;
     imageHeight: number= 32;
+    showImage: boolean= false;
+    errorMessage: string= "";
 
     products: any[]= [{
         "productId": 1,
@@ -31,4 +34,8 @@ export class ProductListComponent {
         "starRating": 4.2,
         "imageUrl": "assets/images/base_bubble.png"
     }];
+
+    toggleImage() {
+        this.showImage = !this.showImage;
+    }
 }
