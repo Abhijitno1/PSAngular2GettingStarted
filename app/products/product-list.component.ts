@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Product } from '../shared/models/product';
-import Products from '../shared/data/products';
+import { ProductsService} from './products.service';
 
 @Component({
     selector: 'product-list',
@@ -17,6 +17,8 @@ export class ProductListComponent implements OnInit {
     filteredProducts: Product[];
     private _listFilter: string;
 
+    constructor(private _productsSvc: ProductsService) {}
+
     get listFilter() { return this._listFilter; }
 
     set listFilter(value: string) {
@@ -26,7 +28,7 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit() {
         console.log('Abhijit: OnInit was called');
-        this.filteredProducts= this.products= Products;
+        this.filteredProducts= this.products= this._productsSvc.getProducts();
     }
 
     toggleImage() {
