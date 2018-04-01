@@ -8,6 +8,7 @@ import { ProductListComponent } from './products/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarRatingComponent } from './shared/widgets/star-rating.component';
 import { ProductsService } from './products/products.service';
+import { ProductDetailComponent } from './products/product-detail.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { ProductsService } from './products/products.service';
     WelcomeComponent,
     ProductListComponent,
     ConvertToSpacesPipe,
-    StarRatingComponent
+    StarRatingComponent,
+    ProductDetailComponent
   ],
   providers: [
     ProductsService

@@ -7,4 +7,8 @@ export class ProductsService {
     getProducts(): Product[] {
         return Products;
     }
+
+    getProduct(productId: number) {
+        return Products.find((prod: Product) => prod.productId == productId);
+    }
 }

@@ -1,7 +1,9 @@
 star-rating directive -- done
-service
-routing
-details page
+service -- done
+routing -- done
+details page -- in progress
 route validation
 http
 modules separation
+dollar2rupee pipe
+grid with paging and sorting
