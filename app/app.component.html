@@ -3,14 +3,15 @@
     <div class="navbar-header">
       <a href="/" class="navbar-brand">{{appTitle}}</a>
       <ul class="nav navbar-nav">
-        <li><a href=".">Home</a></li>
-        <li><a href="http://microsoft.com">Product List</a></li>
+        <li><a [routerLink]="['/welcome']">Home</a></li>
+        <li><a [routerLink]="['/products']">Product List</a></li>
       </ul>
     </div>
   </nav>
 </header>
 <div class="container-fluid">
-<product-list></product-list>
+<router-outlet></router-outlet>
+<!-- <product-list></product-list> -->
 </div>
 
 <footer class="text-center">
