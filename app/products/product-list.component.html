@@ -3,7 +3,16 @@
         {{pageTitle}}
     </div>
     <div class="panel-body">
-        <div class="table-responsive">
+        <div class="row">
+            <div class="col-md-2">Filter By:</div>
+            <div class="col-md-4">
+                <input [(ngModel)]="listFilter" />
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md-6">Filtered By: {{listFilter}}</div>
+            </div>
+            <div class="table-responsive">
             <table class="table" *ngIf="products && products.length">
                 <thead>
                     <tr>
@@ -12,10 +21,11 @@
                         <th>Code</th>
                         <th>Available</th>
                         <th>Price</th>
+                        <th>Rating</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of filteredProducts">
                         <td><img *ngIf="showImage"
                             [src]="product.imageUrl" [title]="product.productName" 
                             [style.width.px]="imageWidth" [style.margin.px]="imageMargin" /></td>
@@ -23,6 +33,7 @@
                         <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency:'INR':true:'1.2-2'}}</td>
+                        <td><star-rating [rating]="product.starRating" (ratingClicked)="onRatingClick($event)"></star-rating></td>
                     </tr>
                 </tbody>
             </table>

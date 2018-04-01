@@ -1,0 +1,7 @@
+star-rating directive -- done
+service
+routing
+details page
+route validation
+http
+modules separation

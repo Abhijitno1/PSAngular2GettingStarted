@@ -13,14 +13,33 @@ export class ProductListComponent implements OnInit {
     imageMargin: number= 2;
     showImage: boolean= false;
     errorMessage: string= "";
-    products: Product[];
+    products: Product[]= [];
+    filteredProducts: Product[];
+    private _listFilter: string;
+
+    get listFilter() { return this._listFilter; }
+
+    set listFilter(value: string) {
+        this._listFilter = value;
+        this.filteredProducts = this.listFilter? this.applyFilter(value): this.products;       
+    }
 
     ngOnInit() {
         console.log('Abhijit: OnInit was called');
-        this.products= Products;
+        this.filteredProducts= this.products= Products;
     }
 
     toggleImage() {
         this.showImage = !this.showImage;
+    }
+
+    applyFilter(filterBy: string): Product[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter((product: Product) => 
+            product.productName.toLocaleLowerCase().indexOf(filterBy) > -1);
+    }
+
+    onRatingClick(message: string): void {
+        this.pageTitle = `Products List: ${message}`;
     }
 }
