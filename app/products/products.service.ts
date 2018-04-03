@@ -9,6 +9,7 @@ export class ProductsService {
     }
 
     getProduct(productId: number) {
-        return Products.find((prod: Product) => prod.productId == productId);
+        var foundProduct: Product = Products.find((prod: Product) => prod.productId == productId);
+        return foundProduct;
     }
 }

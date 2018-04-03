@@ -17,6 +17,7 @@ import { ProductDetailComponent } from './products/product-detail.component';
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent},
       {path: 'products', component: ProductListComponent},
+      {path: 'products/:id', component: ProductDetailComponent},
       {path: '', redirectTo: 'welcome', pathMatch: 'full' }, //No path specified
       {path: '**', redirectTo: 'welcome', pathMatch: 'full' } //Nonexisting path specified
     ])
