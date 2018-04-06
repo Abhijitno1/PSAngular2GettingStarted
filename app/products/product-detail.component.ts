@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ProductsService } from "./products.service";
-import { Product } from '../shared/models/product';
+import { IProduct } from '../shared/models/product';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
     pageTitle: string= 'Product Details';
-    product: Product;
+    product: IProduct;
 
     constructor(
         private _route: ActivatedRoute,
@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const param: string= this._route.snapshot.params.id;
+        const param: string= this._route.snapshot.params['id'];
         const id = +param;  //+ converts string to int
         this.product = this._productsSvc.getProduct(id);
     }
