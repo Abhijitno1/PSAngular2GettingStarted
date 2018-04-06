@@ -19,7 +19,12 @@ export class ProductDetailComponent implements OnInit {
     ngOnInit(): void {
         const param: string= this._route.snapshot.params['id'];
         const id = +param;  //+ converts string to int
-        this.product = this._productsSvc.getProduct(id);
+        this._productsSvc.getProduct(id).subscribe(
+            prod => {
+                this.product = prod 
+            },
+            err => alert('AJAX error occurred: ' + err)
+        );
     }
 
     onBack(): void {
