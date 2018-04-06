@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
-import { Product } from "../shared/models/product";
+import { IProduct } from "../shared/models/product";
 import Products from '../shared/data/products';
 
 @Injectable()
 export class ProductsService {
-    getProducts(): Product[] {
+    getProducts(): IProduct[] {
         return Products;
     }
 
     getProduct(productId: number) {
-        var foundProduct: Product = Products.find((prod: Product) => prod.productId == productId);
+        var foundProduct: IProduct = Products.find((prod: IProduct) => prod.productId == productId);
         return foundProduct;
     }
 }

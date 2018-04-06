@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Product } from '../shared/models/product';
+import { IProduct } from '../shared/models/product';
 import { ProductsService} from './products.service';
 
 @Component({
@@ -13,8 +13,8 @@ export class ProductListComponent implements OnInit {
     imageMargin: number= 2;
     showImage: boolean= false;
     errorMessage: string= "";
-    products: Product[]= [];
-    filteredProducts: Product[];
+    products: IProduct[]= [];
+    filteredProducts: IProduct[];
     private _listFilter: string;
 
     constructor(private _productsSvc: ProductsService) {}
@@ -35,9 +35,9 @@ export class ProductListComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
-    applyFilter(filterBy: string): Product[] {
+    applyFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
-        return this.products.filter((product: Product) => 
+        return this.products.filter((product: IProduct) => 
             product.productName.toLocaleLowerCase().indexOf(filterBy) > -1);
     }
 
