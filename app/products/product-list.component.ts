@@ -27,8 +27,11 @@ export class ProductListComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('Abhijit: OnInit was called');
-        this.filteredProducts= this.products= this._productsSvc.getProducts();
+        //console.log('Abhijit: OnInit was called');
+        this._productsSvc.getProducts().subscribe(
+            allProds => this.filteredProducts = this.products = allProds,
+            error => this.errorMessage = error
+        );
     }
 
     toggleImage() {

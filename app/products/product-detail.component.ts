@@ -21,6 +21,7 @@ export class ProductDetailComponent implements OnInit {
         const id = +param;  //+ converts string to int
         this._productsSvc.getProduct(id).subscribe(
             prod => {
+                //console.log('foundProduct', prod); 
                 this.product = prod 
             },
             err => alert('AJAX error occurred: ' + err)
