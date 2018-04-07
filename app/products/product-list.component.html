@@ -31,7 +31,7 @@
                             [style.width.px]="imageWidth" [style.margin.px]="imageMargin" /></td>
                         <td><a [routerLink]="['/products', product.productId]">{{product.productName | uppercase}}</a></td>
                         <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>
-                        <td>{{product.releaseDate}}</td>
+                        <td>{{product.releaseDate | date: 'dd/MM/yyyy'}}</td>
                         <td>{{product.price | currency:'INR':true:'1.2-2'}}</td>
                         <td><star-rating [rating]="product.starRating" (ratingClicked)="onRatingClick($event)"></star-rating></td>
                     </tr>

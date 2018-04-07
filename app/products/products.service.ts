@@ -16,7 +16,13 @@ export class ProductsService {
 
     getProducts(): Observable<IProduct[]> {
         return this._http.get(this._dataUrl)
-        .map(resp => resp.json())
+        .map((resp: Response) => { 
+            let jsonData = resp.json();
+            jsonData.forEach(elm => {
+                elm.releaseDate = new Date(elm.releaseDate);
+            });
+            return jsonData;
+         })
         .do(data => console.log(JSON.stringify(data)))
         .catch(this.handleError);
     }
