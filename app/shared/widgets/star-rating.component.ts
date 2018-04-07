@@ -3,7 +3,7 @@ import { Component, Input, OnChanges, Output, EventEmitter } from "@angular/core
 @Component({
     selector: 'star-rating',
     templateUrl: './app/shared/widgets/star-rating.component.html',
-    styles: ['div {cursor:pointer;}', '.crop {overflow:hidden;}'] 
+    styles: ['.crop {overflow:hidden;}'] 
 })
 export class StarRatingComponent implements OnChanges {
     @Input() rating: number;

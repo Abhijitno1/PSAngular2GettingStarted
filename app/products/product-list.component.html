@@ -17,15 +17,25 @@
                 <thead>
                     <tr>
                         <th class="clickable" (click)="toggleImage()">{{showImage? "Hide": "Show"}} Image</th>
-                        <th>Product</th>
-                        <th>Code</th>
-                        <th>Available</th>
-                        <th>Price</th>
-                        <th>Rating</th>
+                        <th>Product
+                            <sort-col-header [sortColumn]="sortColumn" [currentColumn]="'productName'" (columnSorted)="onColumnSort($event)"></sort-col-header>
+                        </th>
+                        <th>Code
+                            <sort-col-header [sortColumn]="sortColumn" [currentColumn]="'productCode'" (columnSorted)="onColumnSort($event)"></sort-col-header>
+                        </th>
+                        <th>Available
+                            <sort-col-header [sortColumn]="sortColumn" [currentColumn]="'releaseDate'" (columnSorted)="onColumnSort($event)"></sort-col-header>
+                        </th>
+                        <th>Price
+                            <sort-col-header [sortColumn]="sortColumn" [currentColumn]="'price'" (columnSorted)="onColumnSort($event)"></sort-col-header>
+                        </th>
+                        <th>Rating
+                            <sort-col-header [sortColumn]="sortColumn" [currentColumn]="'starRating'" (columnSorted)="onColumnSort($event)"></sort-col-header>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of filteredProducts">
+                    <tr *ngFor="let product of filteredProducts | orderBy: {property: sortColumn, direction: sortOrder}">
                         <td><img *ngIf="showImage"
                             [src]="product.imageUrl" [title]="product.productName" 
                             [style.width.px]="imageWidth" [style.margin.px]="imageMargin" /></td>

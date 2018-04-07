@@ -23,7 +23,7 @@ export class ProductsService {
             });
             return jsonData;
          })
-        .do(data => console.log(JSON.stringify(data)))
+        //.do(data => console.log(JSON.stringify(data))) //Uncomment while debugging
         .catch(this.handleError);
     }
 
