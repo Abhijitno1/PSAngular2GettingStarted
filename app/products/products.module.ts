@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductsService } from './products.service';
+import { ProductGuardService} from './product-guard.service';
 import { WidgetsModule } from '../shared/widgets/widgets.module';
 import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
 
@@ -10,7 +11,11 @@ import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
     imports: [
         RouterModule.forChild([
             {path: 'products', component: ProductListComponent},
-            {path: 'products/:id', component: ProductDetailComponent},
+            {
+                path: 'products/:id', 
+                canActivate: [ProductGuardService],
+                component: ProductDetailComponent
+            },
         ]),
         WidgetsModule
     ],
@@ -20,7 +25,8 @@ import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
         ConvertToSpacesPipe
     ],
     providers: [
-        ProductsService
+        ProductsService,
+        ProductGuardService
     ]
 })
 export class ProductsModule {}

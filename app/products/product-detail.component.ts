@@ -22,6 +22,10 @@ export class ProductDetailComponent implements OnInit {
         this._productsSvc.getProduct(id).subscribe(
             prod => {
                 //console.log('foundProduct', prod); 
+                if (!prod) {
+                    alert('Product not found');
+                    this._router.navigate(['/products']);
+                }
                 this.product = prod 
             },
             err => alert('AJAX error occurred: ' + err)
