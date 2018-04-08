@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MiscStudyComponent } from './misc-study.component'
 import { RangeDirective } from './range.directive';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
     imports: [
@@ -9,7 +10,8 @@ import { RangeDirective } from './range.directive';
     ],
     declarations: [
         MiscStudyComponent,
-        RangeDirective
+        RangeDirective,
+        HighlightDirective
     ]
 })
 export class MiscStudyModule {}
