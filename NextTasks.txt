@@ -1,9 +1,15 @@
 star-rating directive -- done
 service -- done
 routing -- done
-details page -- in progress
-route validation
-http
-modules separation
+details page -- done
+route validation -- done
+http -- done
+modules separation -- done
 dollar2rupee pipe
-grid with paging and sorting
+grid sorting -- done
+grid paging
+
+    next exercise
+    https://angular.io/guide/dynamic-component-loader
+    http://deanmalone.net/post/using-jquery-from-angular2/
+    https://stackoverflow.com/questions/30623825/how-to-use-jquery-with-angular

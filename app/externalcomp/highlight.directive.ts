@@ -1,10 +1,5 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
-/*
-    next exercise
-    http://deanmalone.net/post/using-jquery-from-angular2/
-    https://stackoverflow.com/questions/30623825/how-to-use-jquery-with-angular
-*/
 @Directive({   
     selector: '[appHighlight]'
 })
