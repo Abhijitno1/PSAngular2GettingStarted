@@ -8,6 +8,7 @@ import { AdHostDirective } from './ad-host.directive';
     template: `
         <div class="ad-banner">
             <h3>Advertisements</h3>
+            <button style="float:right;" (click)="toggleAdRotation()">{{toggleText}} Ad-rotation</button>
             <ng-template ad-host></ng-template>
         </div>
     `
@@ -15,6 +16,7 @@ import { AdHostDirective } from './ad-host.directive';
 export class AdBannerComponent implements OnInit, OnDestroy {
     @Input() ads: AdItem[]= [];
     @ViewChild(AdHostDirective) adHost: AdHostDirective;
+    toggleText: string= "Stop";
     _curAdIndex: number= -1;
     _interval: any;
 
@@ -27,6 +29,17 @@ export class AdBannerComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         clearInterval(this._interval);
+    }
+
+    toggleAdRotation() {
+        if (this.toggleText=='Stop') {
+            clearInterval(this._interval);
+            this.toggleText= 'Start';
+        }
+        else {
+            this.setAdIntervals();
+            this.toggleText= 'Stop';
+        }
     }
 
     private loadComponent(): void { 
