@@ -8,6 +8,8 @@ import { HeroJobAdComponent } from './hero-job-ad.component';
 import { HeroProfileComponent } from './hero-profile.component';
 import { AdHostDirective } from './ad-host.directive';
 import { AdService } from './ad.service';
+import { TreeViewComponent } from './tree-view.component';
+import { TreeDataService } from './tree-data.service';
 
 @NgModule({
     imports: [
@@ -20,14 +22,16 @@ import { AdService } from './ad.service';
         AdBannerComponent,
         AdHostDirective,
         HeroJobAdComponent,
-        HeroProfileComponent
+        HeroProfileComponent,
+        TreeViewComponent
     ],
     entryComponents: [
         HeroJobAdComponent,
         HeroProfileComponent
     ],
     providers: [
-        AdService
+        AdService,
+        TreeDataService
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })

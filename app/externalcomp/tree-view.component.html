@@ -1,0 +1,28 @@
+<ul class="nav nav-pills nav-stacked" *ngIf="node">
+    <li class="presentation">
+        <a href="javascript:void(0)">
+            <div>
+                <span [style.display]="(node.children.length && !node.isExpanded)? 'inline': 'none'">
+                    <i class="glyphicon glyphicon-plus-sign" (click)="nodeClicked('expand')"></i>
+                </span>
+                <span [style.display]="(node.children.length && node.isExpanded)? 'inline': 'none'">
+                    <i class="glyphicon glyphicon-minus-sign" (click)="nodeClicked('collapse')"></i>
+                </span>
+                <span [style.display]="(node.isSelected)? 'inline': 'none'">
+                    <i class="glyphicon glyphicon-check" (click)="nodeClicked('unselect')"></i>
+                </span>
+                <span [style.display]="(!node.isSelected)? 'inline': 'none'">
+                    <i class="glyphicon glyphicon-unchecked" (click)="nodeClicked('select')"></i>
+                </span>
+                {{node.name}}
+            </div>
+        </a>
+    </li>
+</ul>
+<div class="tree" *ngIf="node && node.children.length && node.isExpanded">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="presentation" *ngFor="let child of node.children">
+            <tree-view [node]="child"></tree-view>
+        </li>
+    </ul>
+</div>

@@ -7,9 +7,12 @@ http -- done
 modules separation -- done
 dollar2rupee pipe
 grid sorting -- done
+Insert component dynamically within other component --done
+    https://angular.io/guide/dynamic-component-loader
+Create tree component -- done
+    https://stackoverflow.com/questions/37746516/use-component-in-itself-recursively-to-create-a-tree
 grid paging
 
     next exercise
-    https://angular.io/guide/dynamic-component-loader
     http://deanmalone.net/post/using-jquery-from-angular2/
     https://stackoverflow.com/questions/30623825/how-to-use-jquery-with-angular
