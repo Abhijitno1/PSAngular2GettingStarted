@@ -1,7 +1,5 @@
-import { Component, Input, ViewChild, ComponentFactoryResolver, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, ViewChild, ComponentFactoryResolver, OnDestroy, AfterContentInit, ViewContainerRef } from '@angular/core';
 import { AdItem } from '../shared/models/ad-item';
-import { AdHostDirective } from './ad-host.directive';
-
 
 @Component({
     selector: 'ad-banner',
@@ -9,20 +7,20 @@ import { AdHostDirective } from './ad-host.directive';
         <div class="ad-banner">
             <h3>Advertisements</h3>
             <button style="float:right;" (click)="toggleAdRotation()">{{toggleText}} Ad-rotation</button>
-            <ng-template ad-host></ng-template>
+            <ng-template #adContainer></ng-template>
         </div>
     `
 })
-export class AdBannerComponent implements OnInit, OnDestroy {
+export class AdBannerComponent implements OnDestroy, AfterContentInit {
     @Input() ads: AdItem[]= [];
-    @ViewChild(AdHostDirective) adHost: AdHostDirective;
+    @ViewChild('adContainer', {read: ViewContainerRef}) adHost: ViewContainerRef;
     toggleText: string= "Stop";
     _curAdIndex: number= -1;
     _interval: any;
 
     constructor(private _componentFactoryResolver: ComponentFactoryResolver) {}
 
-    ngOnInit() {
+    ngAfterContentInit() {
         this.loadComponent();
         this.setAdIntervals();
     }
@@ -46,10 +44,9 @@ export class AdBannerComponent implements OnInit, OnDestroy {
         if (this.ads.length == 0) return;       
         this._curAdIndex = (this._curAdIndex+1) % this.ads.length;
         let nextAd= this.ads[this._curAdIndex];
-        let viewContainerRef= this.adHost.viewContainerRef;
-        viewContainerRef.clear();
+        this.adHost.clear();
         let adFactory= this._componentFactoryResolver.resolveComponentFactory(nextAd.component);        
-        let newComponentRef= viewContainerRef.createComponent(adFactory);
+        let newComponentRef= this.adHost.createComponent(adFactory);
         //console.log('i was here', newComponentRef);        
         (<AdItem>newComponentRef.instance).data = nextAd.data;
     }

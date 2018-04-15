@@ -11,6 +11,7 @@ Insert component dynamically within other component --done
     https://angular.io/guide/dynamic-component-loader
 Create tree component -- done
     https://stackoverflow.com/questions/37746516/use-component-in-itself-recursively-to-create-a-tree
+    pending - tree children check/uncheck on parent check/uncheck
 grid paging
 
     next exercise
