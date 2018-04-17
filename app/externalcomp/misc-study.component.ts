@@ -4,7 +4,8 @@ import { AdService } from './ad.service'
 import { TreeDataService } from './tree-data.service';
 import { TreeNode } from '../shared/models/tree-node';
 
-@Component({   
+@Component({ 
+    selector: 'misc-study',
     template: `
         <h2>This is container view for Miscelleneous External Study Components</h2>
         <p>Select a Year <select><option *range="[2010, 2020]; let num" [value]="num">{{num}}</option></select></p>

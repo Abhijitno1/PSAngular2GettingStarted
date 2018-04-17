@@ -9,6 +9,9 @@ import { HeroProfileComponent } from './hero-profile.component';
 import { AdService } from './ad.service';
 import { TreeViewComponent } from './tree-view.component';
 import { TreeDataService } from './tree-data.service';
+import { MultiExternComponent } from './multi-external.component';
+import { MyTabsComponent } from './my-tabs.component';
+import { MyTabComponent } from './my-tab.component';
 
 @NgModule({
     imports: [
@@ -21,7 +24,10 @@ import { TreeDataService } from './tree-data.service';
         AdBannerComponent,
         HeroJobAdComponent,
         HeroProfileComponent,
-        TreeViewComponent
+        TreeViewComponent,
+        MultiExternComponent,
+        MyTabsComponent,
+        MyTabComponent
     ],
     entryComponents: [
         HeroJobAdComponent,

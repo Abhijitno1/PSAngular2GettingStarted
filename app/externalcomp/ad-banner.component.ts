@@ -14,7 +14,7 @@ import { AdItem } from '../shared/models/ad-item';
 export class AdBannerComponent implements OnDestroy, AfterContentInit {
     @Input() ads: AdItem[]= [];
     @ViewChild('adContainer', {read: ViewContainerRef}) adHost: ViewContainerRef;
-    toggleText: string= "Stop";
+    toggleText: string= "Start";
     _curAdIndex: number= -1;
     _interval: any;
 
@@ -22,7 +22,8 @@ export class AdBannerComponent implements OnDestroy, AfterContentInit {
 
     ngAfterContentInit() {
         this.loadComponent();
-        this.setAdIntervals();
+        //Below line commented to Prevent tab rotation on load in order to debug other components in misc study components view
+        //this.setAdIntervals();
     }
 
     ngOnDestroy() {
