@@ -6,7 +6,6 @@ import { HighlightDirective } from './highlight.directive';
 import { AdBannerComponent } from './ad-banner.component'
 import { HeroJobAdComponent } from './hero-job-ad.component';
 import { HeroProfileComponent } from './hero-profile.component';
-import { AdHostDirective } from './ad-host.directive';
 import { AdService } from './ad.service';
 import { TreeViewComponent } from './tree-view.component';
 import { TreeDataService } from './tree-data.service';
@@ -20,7 +19,6 @@ import { TreeDataService } from './tree-data.service';
         RangeDirective,
         HighlightDirective,
         AdBannerComponent,
-        AdHostDirective,
         HeroJobAdComponent,
         HeroProfileComponent,
         TreeViewComponent
