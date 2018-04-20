@@ -7,7 +7,7 @@ import { TreeNode } from '../shared/models/tree-node';
 @Component({ 
     selector: 'misc-study',
     template: `
-        <h2>This is container view for Miscelleneous External Study Components</h2>
+        <h3>Miscelleneous External Study Components</h3>
         <p>Select a Year <select><option *range="[2010, 2020]; let num" [value]="num">{{num}}</option></select></p>
         <p><span [appHighlight]="highlightColor">This text should be highlighted on hover</span></p>
         <p><ad-banner [ads]="ads"></ad-banner></p>

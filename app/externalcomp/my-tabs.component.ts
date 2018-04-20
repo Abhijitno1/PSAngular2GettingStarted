@@ -7,7 +7,7 @@ import { MyTabComponent } from './my-tab.component';
     selector: 'my-tabs',
     template: `
         <ul class="nav nav-tabs">
-            <li *ngFor="let tab of tabs" [ngClass]="{active: tab?.selected}">
+            <li *ngFor="let tab of tabs" [ngClass]="{active: tab?.selected===true}">
                 <a href="javascript:void(0)" (click)="selectTab(tab)">{{tab?.tabTitle}}</a>
             </li>
         </ul>
@@ -21,6 +21,11 @@ export class MyTabsComponent {
         if (this.tabs.length==0) {
             tab.selected= true;
         }
+        else {
+            if (tab.selected===true)
+                this.tabs[0].selected= false;
+        }
+        //console.log(tab.tabTitle, tab.selected);
         this.tabs.push(tab);
     }
 

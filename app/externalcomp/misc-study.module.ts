@@ -12,6 +12,7 @@ import { TreeDataService } from './tree-data.service';
 import { MultiExternComponent } from './multi-external.component';
 import { MyTabsComponent } from './my-tabs.component';
 import { MyTabComponent } from './my-tab.component';
+import { HtmlDisplayComboComponent } from '../mywidgets/html-display-combo.component';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { MyTabComponent } from './my-tab.component';
         TreeViewComponent,
         MultiExternComponent,
         MyTabsComponent,
-        MyTabComponent
+        MyTabComponent,
+        HtmlDisplayComboComponent
     ],
     entryComponents: [
         HeroJobAdComponent,
