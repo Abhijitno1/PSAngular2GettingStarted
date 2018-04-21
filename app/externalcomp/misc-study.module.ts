@@ -13,6 +13,7 @@ import { MultiExternComponent } from './multi-external.component';
 import { MyTabsComponent } from './my-tabs.component';
 import { MyTabComponent } from './my-tab.component';
 import { HtmlDisplayComboComponent } from '../mywidgets/html-display-combo.component';
+import { PickerWidgetsComponent } from '../mywidgets/picker-widgets.component';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { HtmlDisplayComboComponent } from '../mywidgets/html-display-combo.compo
         MultiExternComponent,
         MyTabsComponent,
         MyTabComponent,
-        HtmlDisplayComboComponent
+        HtmlDisplayComboComponent,
+        PickerWidgetsComponent
     ],
     entryComponents: [
         HeroJobAdComponent,

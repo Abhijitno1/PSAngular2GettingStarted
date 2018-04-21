@@ -6,8 +6,7 @@ import { Component, Input } from '@angular/core';
     template: `
         <my-tabs>
             <my-tab tabTitle="Own Components" selected="true">
-                <h3>My own developed components</h3>
-                <html-combo></html-combo>
+                <picker-widgets></picker-widgets>
             </my-tab>
             <my-tab tabTitle="Directives">
                 <misc-study></misc-study>

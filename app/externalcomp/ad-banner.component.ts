@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ComponentFactoryResolver, OnDestroy, AfterContentInit, ViewContainerRef } from '@angular/core';
+import { Component, Input, ViewChild, ComponentFactoryResolver, OnDestroy, AfterViewInit, ViewContainerRef } from '@angular/core';
 import { AdItem } from '../shared/models/ad-item';
 
 @Component({
@@ -11,7 +11,7 @@ import { AdItem } from '../shared/models/ad-item';
         </div>
     `
 })
-export class AdBannerComponent implements OnDestroy, AfterContentInit {
+export class AdBannerComponent implements OnDestroy, AfterViewInit {
     @Input() ads: AdItem[]= [];
     @ViewChild('adContainer', {read: ViewContainerRef}) adHost: ViewContainerRef;
     toggleText: string= "Start";
@@ -20,7 +20,7 @@ export class AdBannerComponent implements OnDestroy, AfterContentInit {
 
     constructor(private _componentFactoryResolver: ComponentFactoryResolver) {}
 
-    ngAfterContentInit() {
+    ngAfterViewInit() {
         this.loadComponent();
         //Below line commented to Prevent tab rotation on load in order to debug other components in misc study components view
         //this.setAdIntervals();
