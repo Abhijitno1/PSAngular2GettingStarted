@@ -14,6 +14,7 @@ import { MyTabsComponent } from './my-tabs.component';
 import { MyTabComponent } from './my-tab.component';
 import { HtmlDisplayComboComponent } from '../mywidgets/html-display-combo.component';
 import { PickerWidgetsComponent } from '../mywidgets/picker-widgets.component';
+import { MultiCheckComboComponent } from '../mywidgets/multi-check-combo.component';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { PickerWidgetsComponent } from '../mywidgets/picker-widgets.component';
         MyTabsComponent,
         MyTabComponent,
         HtmlDisplayComboComponent,
-        PickerWidgetsComponent
+        PickerWidgetsComponent,
+        MultiCheckComboComponent
     ],
     entryComponents: [
         HeroJobAdComponent,

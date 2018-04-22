@@ -9,13 +9,18 @@ import { IListItem } from '../shared/models/list-item';
         <div>
             <p>
                 <strong>Selected Product: </strong> {{selectedProduct?.text || 'None Selected'}}
-                &mdash; <button class="btn btn-info" (click)="clearSelection()">Clear Selection</button>
+                &mdash; <button class="btn btn-info" (click)="selectedProduct= null">Clear Selection</button>
             </p>
             <html-combo [items]="products" placeholder="Select a Product" [(selectedItem)]="selectedProduct">
                 <template let-listItem="item">
                     {{listItem.text + ' (' + listItem.value + ')'}}
                 </template>
             </html-combo>
+            <hr />
+            <p>
+                <strong>Selected Items: </strong> {{getCheckedValues(mulChkCbo.selectedItems)}} 
+            </p>
+            <multi-check-combo #mulChkCbo [items]="subjects"></multi-check-combo>
         </div>
     `
 })
@@ -26,7 +31,17 @@ export class PickerWidgetsComponent {
         { value: 'javascript', text: 'JavaScript' }
     ];
     selectedProduct: IListItem;
-    clearSelection() {
-        this.selectedProduct= null;
+
+    subjects: IListItem[]= [
+        { value: 'html', text: 'HTML' },
+        { value: 'css', text: 'CSS' },
+        { value: 'javascript', text: 'JavaScript' }
+    ];
+
+    getCheckedValues(checkedItems: IListItem[]): string {
+        if (checkedItems && checkedItems.length)
+            return checkedItems.map(item=> item.text).join(', ');
+        else
+            return 'None Selected';
     }
 }
