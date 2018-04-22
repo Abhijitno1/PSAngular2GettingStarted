@@ -40,6 +40,7 @@ export class HtmlDisplayComboComponent implements AfterViewInit, OnChanges, DoCh
 
     ngDoCheck() {
         //https://www.tektutorialshub.com/angular-ngdocheck-life-cycle-hook/
+        //Also read alternative methods to use collection/object watchers in Angular2+ in above article
         var me= this;
         setTimeout(() => {
             if (me.selIndexChange===true) {
@@ -52,12 +53,12 @@ export class HtmlDisplayComboComponent implements AfterViewInit, OnChanges, DoCh
 
     ngAfterViewInit() {
         var me= this;
-        document.onclick= function() {
+        document.addEventListener('click', function() {
             //Manually trigger change detection cycle as onclick event is not automatically recognized
             //https://stackoverflow.com/questions/34827334/triggering-change-detection-manually-in-angular
             me.listDisplay= "none";
             me.changeDetector.detectChanges();
-        }
+        });
     }
 
     toggleList(evt) {

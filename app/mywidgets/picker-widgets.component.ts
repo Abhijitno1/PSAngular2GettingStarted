@@ -18,7 +18,8 @@ import { IListItem } from '../shared/models/list-item';
             </html-combo>
             <hr />
             <p>
-                <strong>Selected Items: </strong> {{getCheckedValues(mulChkCbo.selectedItems)}} 
+                <strong>Selected Items: </strong> {{mulChkCbo.displayText}} 
+                &mdash; <button class="btn btn-info" (click)="unselectSubjects()">Clear Selection</button>
             </p>
             <multi-check-combo #mulChkCbo [items]="subjects"></multi-check-combo>
         </div>
@@ -38,10 +39,8 @@ export class PickerWidgetsComponent {
         { value: 'javascript', text: 'JavaScript' }
     ];
 
-    getCheckedValues(checkedItems: IListItem[]): string {
-        if (checkedItems && checkedItems.length)
-            return checkedItems.map(item=> item.text).join(', ');
-        else
-            return 'None Selected';
+    unselectSubjects() {
+        this.subjects.forEach(sub => sub.isSelected= false);
+        //console.debug(this.subjects);
     }
 }

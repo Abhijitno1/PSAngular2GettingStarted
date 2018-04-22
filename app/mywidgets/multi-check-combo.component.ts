@@ -41,7 +41,14 @@ export class MultiCheckComboComponent implements AfterViewInit {
 
     listHidden: string= "none";
     placeholder: string= "Select a value";
-    displayText: string= this.placeholder;
+    public get displayText() {
+        //Converting displayText to property helps to automatically update it when selected items collection changes
+        let selItems= this.getSelectedItems();
+        if (selItems.length > 0)
+            return selItems.map(item=> item.text).join(', ');
+        else
+            return this.placeholder;
+    }
 
     public get selectedItems(): IListItem[] {
         return this.getSelectedItems();
@@ -51,29 +58,28 @@ export class MultiCheckComboComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         var me= this;
-        document.onclick= function() {
+        document.addEventListener('click', function() {
             me.listHidden= "none";
             me.changeDetector.detectChanges();
-        }
+        });
     }
 
     toggleList(evt) {
         evt.stopPropagation();
         evt.preventDefault();
         this.listHidden= this.listHidden=="none" ? "block": "none";
+        debugger;
     }
 
     private toggleSelect(item: any, evt): void {
         item.isSelected = !item.isSelected;
         this.itemClicked.emit(item);
-        this.displayText= this.getSelectedItems().map(item=> item.text).join(', ');
-        if (this.displayText.length==0)
-            this.displayText= this.placeholder;
         evt.stopPropagation();
         evt.preventDefault();
     }
 
     private getSelectedItems(): IListItem[] {
+        if (!this.items) return [];
         return this.items.filter(item => item.isSelected==true);
     }
 }
