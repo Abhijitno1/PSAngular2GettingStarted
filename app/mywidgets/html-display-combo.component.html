@@ -1,0 +1,22 @@
+<div class="dropdown">
+    <div class="display-text" (click)="toggleList($event)" [ngSwitch]="!!selectedItem">
+        <div *ngSwitchCase="true">
+            <template
+                [ngTemplateOutlet]="itemTemplate"
+                [ngOutletContext]="{item: selectedItem, index: selectedIndex}">
+            </template>
+        </div>
+        <div *ngSwitchCase="false">
+            {{placeholder || 'Nothing Selected'}}
+        </div>
+        <span class="caret"></span>
+    </div>
+    <ul #dropdownList class="dropdown-menu" [style.display]="listDisplay">
+        <li *ngFor="let item of items; let i= index" (click)="itemClicked(i)" [ngClass]="{active: i==selectedIndex}">
+            <template
+                [ngTemplateOutlet]="itemTemplate"
+                [ngOutletContext]="{item: item, index: index}">
+            </template>
+        </li>
+    </ul>
+</div>

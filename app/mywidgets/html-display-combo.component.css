@@ -1,0 +1,23 @@
+.display-text {
+    display: inline-block;
+    min-width: 160px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding: 3px 20px;
+}
+.display-text>div {
+    display: inline-block;
+}
+.dropdown-menu li {
+    cursor: pointer;
+    padding: 3px 20px;
+    clear: both;
+}
+.dropdown-menu li:hover {
+    background-color: #f5f5f5;
+}
+.dropdown-menu li.active {
+    color: #fff;
+    background-color: #337ab7;
+}
+/*.caret { float: right; padding-top: 5px; }*/
