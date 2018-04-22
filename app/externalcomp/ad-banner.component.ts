@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, ComponentFactoryResolver, OnDestroy, AfterViewInit, ViewContainerRef } from '@angular/core';
 import { AdItem } from '../shared/models/ad-item';
 
+//https://angular.io/guide/dynamic-component-loader
 @Component({
     selector: 'ad-banner',
     template: `

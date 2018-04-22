@@ -8,16 +8,17 @@ modules separation -- done
 dollar2rupee pipe
 grid sorting -- done
 Insert component dynamically within other component --done
-    https://angular.io/guide/dynamic-component-loader
-Create tree component -- done
-    https://stackoverflow.com/questions/37746516/use-component-in-itself-recursively-to-create-a-tree
+Create tree component -- done    
 
 next exercise
     select default tab header on load
-    HTML Combobox deselect issue due to selectedIndex
+    use moduleid in component and use relative path for template and css files
+    move mywidgets to shared/widgets folder
     load products from service in HTMLCombo and show image in display template
     tree children check/uncheck on parent check/uncheck
+    treeview picker control
     grid paging
+    integrate jsdiff control
  
     http://deanmalone.net/post/using-jquery-from-angular2/
     https://stackoverflow.com/questions/30623825/how-to-use-jquery-with-angular
