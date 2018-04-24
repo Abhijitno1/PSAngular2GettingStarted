@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { IListItem } from '../shared/models/list-item';
+import { IListItem } from '../models/list-item';
 
 @Component({ 
     selector: 'multi-check-combo',

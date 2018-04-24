@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA ,NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WidgetsModule } from '../shared/widgets/widgets.module';
 import { MiscStudyComponent } from './misc-study.component'
 import { RangeDirective } from './range.directive';
 import { HighlightDirective } from './highlight.directive';
@@ -12,13 +13,12 @@ import { TreeDataService } from './tree-data.service';
 import { MultiExternComponent } from './multi-external.component';
 import { MyTabsComponent } from './my-tabs.component';
 import { MyTabComponent } from './my-tab.component';
-import { HtmlDisplayComboComponent } from '../mywidgets/html-display-combo.component';
-import { PickerWidgetsComponent } from '../mywidgets/picker-widgets.component';
-import { MultiCheckComboComponent } from '../mywidgets/multi-check-combo.component';
+import { PickerWidgetsComponent } from './picker-widgets.component';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        WidgetsModule
     ],
     declarations: [
         MiscStudyComponent,
@@ -31,9 +31,7 @@ import { MultiCheckComboComponent } from '../mywidgets/multi-check-combo.compone
         MultiExternComponent,
         MyTabsComponent,
         MyTabComponent,
-        HtmlDisplayComboComponent,
         PickerWidgetsComponent,
-        MultiCheckComboComponent
     ],
     entryComponents: [
         HeroJobAdComponent,

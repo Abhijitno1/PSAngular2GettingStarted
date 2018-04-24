@@ -1,6 +1,6 @@
 import { Component, EventEmitter, ChangeDetectorRef, TemplateRef, OnChanges, DoCheck, 
     AfterViewInit, SimpleChanges, ContentChild } from '@angular/core';
-import { IListItem } from '../shared/models/list-item';
+import { IListItem } from '../models/list-item';
 //https://www.bennadel.com/blog/3116-using-an-item-template-with-an-html-dropdown-menu-component-in-angular-2-rc-3.htm
 
 @Component({ 
@@ -14,8 +14,10 @@ import { IListItem } from '../shared/models/list-item';
     host: {
         '[class.isOpen]': 'listDisplay=="block"'
     },
-    templateUrl: './app/mywidgets/html-display-combo.component.html',
-    styleUrls: ['./app/mywidgets/html-display-combo.component.css']
+    //moduleId: module.id,
+    //templateUrl: 'html-display-combo.component.html',
+    templateUrl: './app/shared/widgets/html-display-combo.component.html',
+    styleUrls: ['./app/shared/widgets/html-display-combo.component.css']
 })
 export class HtmlDisplayComboComponent implements AfterViewInit, OnChanges, DoCheck {
     public items: IListItem[]= [];

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { StarRatingComponent } from './star-rating.component';
 import { OrderByPipe } from './order-by.pipe';
 import { SortColHeaderComponent } from './sort-col-header.component';
+import { HtmlDisplayComboComponent } from './html-display-combo.component';
+import { MultiCheckComboComponent } from './multi-check-combo.component';
 
 @NgModule({
     imports: [
@@ -13,11 +15,15 @@ import { SortColHeaderComponent } from './sort-col-header.component';
     declarations: [
         StarRatingComponent,
         SortColHeaderComponent,
+        HtmlDisplayComboComponent,
+        MultiCheckComboComponent,
         OrderByPipe
     ],
     exports: [
         StarRatingComponent,
         SortColHeaderComponent,
+        HtmlDisplayComboComponent,
+        MultiCheckComboComponent,
         OrderByPipe,
         CommonModule,
         FormsModule
