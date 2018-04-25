@@ -11,8 +11,16 @@ import { TreeNode } from '../shared/models/tree-node';
         <p>Select a Year <select><option *range="[2010, 2020]; let num" [value]="num">{{num}}</option></select></p>
         <p><span [appHighlight]="highlightColor">This text should be highlighted on hover</span></p>
         <p><ad-banner [ads]="ads"></ad-banner></p>
-        <p> <tree-view [node]="treeData"></tree-view> </p>
-        <p> Count of Checked Items = {{getCheckedCount()}} </p>
+        <div>
+            <p> <tree-view #treeView [node]="treeData"></tree-view> </p>
+            <div>
+                <div style="float: left; width: 30%">Count of Checked Items = {{getCheckedCount()}}</div>
+                <div style="float: left">
+                    <button class="btn btn-default" (click)="treeView.expandOrCollapseAll('expand')">Expand All</button>
+                    <button class="btn btn-default" (click)="treeView.expandOrCollapseAll('collapse')">Collapse All</button>
+                </div>
+            <div>
+        </div>
     `
 })
 export class MiscStudyComponent implements OnInit {

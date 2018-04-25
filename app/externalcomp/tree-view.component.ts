@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TreeNode } from '../shared/models/tree-node';
+import { Tree } from '@angular/router/src/utils/tree';
 
 //https://stackoverflow.com/questions/37746516/use-component-in-itself-recursively-to-create-a-tree
 @Component({
@@ -13,19 +14,29 @@ import { TreeNode } from '../shared/models/tree-node';
 export class TreeViewComponent {
     @Input() node: TreeNode;
 
-    nodeClicked(action: string) {
-        switch (action) {
+    public expandOrCollapseAll(state: string) {
+        switch (state) {
             case 'expand':
-                this.node.isExpanded= true;
+                this.cascadeNodeAction(this.node, (curnode)=> curnode.isExpanded=true);
                 break;
             case 'collapse':
-                this.node.isExpanded= false;
+                this.cascadeNodeAction(this.node, (curnode)=> curnode.isExpanded=false);
                 break;
+        }
+    }
+
+    private cascadeNodeAction(node: TreeNode, action: (node: TreeNode)=>void) {
+        action(node);
+        node.children.forEach(child=> this.cascadeNodeAction(child, action));
+    }
+
+    nodeClicked(action: string) {
+        switch (action) {
             case 'select':
-                this.node.isSelected= true;
+                this.cascadeNodeAction(this.node, (curnode)=> curnode.isSelected=true);
                 break;
             case 'unselect':
-                this.node.isSelected= false;
+                this.cascadeNodeAction(this.node, (curnode)=> curnode.isSelected=false);
                 break;
         }
     }

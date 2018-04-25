@@ -3,18 +3,21 @@
         <a href="javascript:void(0)">
             <div>
                 <span [style.display]="(node.children.length && !node.isExpanded)? 'inline': 'none'">
-                    <i class="glyphicon glyphicon-plus-sign" (click)="nodeClicked('expand')"></i>
+                    <i class="glyphicon glyphicon-plus-sign" (click)="node.isExpanded= true"></i>
                 </span>
                 <span [style.display]="(node.children.length && node.isExpanded)? 'inline': 'none'">
-                    <i class="glyphicon glyphicon-minus-sign" (click)="nodeClicked('collapse')"></i>
+                    <i class="glyphicon glyphicon-minus-sign" (click)="node.isExpanded= false"></i>
                 </span>
-                <span [style.display]="(node.isSelected)? 'inline': 'none'">
-                    <i class="glyphicon glyphicon-check" (click)="nodeClicked('unselect')"></i>
+                <span [style.display]="(node.isSelected)? 'inline': 'none'"
+                    (click)="nodeClicked('unselect')">
+                    <i class="glyphicon glyphicon-check"></i>
+                    {{node.name}}
                 </span>
-                <span [style.display]="(!node.isSelected)? 'inline': 'none'">
-                    <i class="glyphicon glyphicon-unchecked" (click)="nodeClicked('select')"></i>
+                <span [style.display]="(!node.isSelected)? 'inline': 'none'"
+                    (click)="nodeClicked('select')">
+                    <i class="glyphicon glyphicon-unchecked"></i>
+                    {{node.name}}
                 </span>
-                {{node.name}}
             </div>
         </a>
     </li>
