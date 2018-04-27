@@ -34,9 +34,19 @@ export class TreeViewComponent {
         switch (action) {
             case 'select':
                 this.cascadeNodeAction(this.node, (curnode)=> curnode.isSelected=true);
+                let curparent = this.node.parent;
+                while (curparent) {
+                    curparent.isSelected= curparent.children.every(child => child.isSelected);
+                    curparent = curparent.parent;
+                }
                 break;
             case 'unselect':
                 this.cascadeNodeAction(this.node, (curnode)=> curnode.isSelected=false);
+                let curparent2 = this.node.parent;
+                while (curparent2) {
+                    curparent2.isSelected= false;
+                    curparent2 = curparent2.parent;
+                }
                 break;
         }
     }

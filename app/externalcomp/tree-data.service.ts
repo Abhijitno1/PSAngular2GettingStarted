@@ -23,6 +23,7 @@ export class TreeDataService {
 
     private addChildNode(parent: TreeNode, id: number, name: string): TreeNode {
         let newNode= new TreeNode(id, name);
+        newNode.parent= parent;
         parent.children.push(newNode);
         return newNode;
     }
