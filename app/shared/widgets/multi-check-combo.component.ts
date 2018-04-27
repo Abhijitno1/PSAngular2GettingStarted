@@ -68,7 +68,6 @@ export class MultiCheckComboComponent implements AfterViewInit {
         evt.stopPropagation();
         evt.preventDefault();
         this.listHidden= this.listHidden=="none" ? "block": "none";
-        debugger;
     }
 
     private toggleSelect(item: any, evt): void {
