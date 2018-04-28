@@ -25,7 +25,7 @@ export class HtmlDisplayComboComponent implements AfterViewInit, OnChanges, DoCh
     public selectedItem: any;
     public selectedItemChange: EventEmitter<any>= new EventEmitter();
 
-    listDisplay: string= "none";
+    listDisplay: boolean= false;
     private selectedIndex: number= -1; //To be enhanced by converting to property
     private selIndexChange: boolean= false;
 
@@ -58,7 +58,7 @@ export class HtmlDisplayComboComponent implements AfterViewInit, OnChanges, DoCh
         document.addEventListener('click', function() {
             //Manually trigger change detection cycle as onclick event is not automatically recognized
             //https://stackoverflow.com/questions/34827334/triggering-change-detection-manually-in-angular
-            me.listDisplay= "none";
+            me.listDisplay= false;
             me.changeDetector.detectChanges();
         });
     }
@@ -66,14 +66,14 @@ export class HtmlDisplayComboComponent implements AfterViewInit, OnChanges, DoCh
     toggleList(evt) {
         evt.stopPropagation();
         evt.preventDefault();
-        this.listDisplay= this.listDisplay=="none" ? "block": "none";
+        this.listDisplay= !this.listDisplay;
     }
 
     private itemClicked(i: number): void {
         let originalIndex= this.selectedIndex;
         this.selectedIndex= i;
         this.selectedItem= this.items[i];
-        this.listDisplay= "none";
+        this.listDisplay= false;
         this.selectedItemChange.emit(this.selectedItem);
     }
 }

@@ -11,7 +11,7 @@
         </div>
         <span class="caret"></span>
     </div>
-    <ul #dropdownList class="dropdown-menu" [style.display]="listDisplay">
+    <ul #dropdownList class="dropdown-menu combo-list" *ngIf="listDisplay">
         <li *ngFor="let item of items; let i= index" (click)="itemClicked(i)" [ngClass]="{active: i==selectedIndex}">
             <template
                 [ngTemplateOutlet]="itemTemplate"
