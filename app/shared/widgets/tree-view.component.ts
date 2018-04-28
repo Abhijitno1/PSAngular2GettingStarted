@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { TreeNode } from '../shared/models/tree-node';
-import { Tree } from '@angular/router/src/utils/tree';
+import { TreeNode } from '../models/tree-node';
 
 //https://stackoverflow.com/questions/37746516/use-component-in-itself-recursively-to-create-a-tree
 @Component({
     selector: 'tree-view',
-    templateUrl: './app/externalcomp/tree-view.component.html',
+    templateUrl: './app/shared/widgets/tree-view.component.html',
     styles: [`.tree {
                 margin-left: 20px;
                 display: block;

@@ -10,6 +10,7 @@ import { ProductsService} from '../products/products.service';
     template: `
         <h3>Custom Dropdown Components</h3>
         <div>
+            <h4>Html List Picker</h4>
             <p>
                 <strong>Selected Product: </strong> {{selectedProduct?.productName || 'None Selected'}}
                 &mdash; <button class="btn btn-info" (click)="selectedProduct= null">Clear Selection</button>
@@ -21,11 +22,15 @@ import { ProductsService} from '../products/products.service';
                 </template>
             </html-combo>
             <hr />
+            <h4>Multiselect List Picker with checkbox</h4>
             <p>
                 <strong>Selected Items: </strong> {{mulChkCbo.displayText}} 
                 &mdash; <button class="btn btn-info" (click)="unselectSubjects()">Clear Selection</button>
             </p>
             <multi-check-combo #mulChkCbo [items]="subjects"></multi-check-combo>
+            <hr />
+            <h4>Multiselect Tree Picker with checkbox</h4>
+            <tree-combo></tree-combo>
         </div>
     `
 })

@@ -6,6 +6,8 @@ import { OrderByPipe } from './order-by.pipe';
 import { SortColHeaderComponent } from './sort-col-header.component';
 import { HtmlDisplayComboComponent } from './html-display-combo.component';
 import { MultiCheckComboComponent } from './multi-check-combo.component';
+import { TreeViewComponent } from './tree-view.component';
+import { TreeComboComponent } from './tree-combo.component';
 
 @NgModule({
     imports: [
@@ -17,6 +19,8 @@ import { MultiCheckComboComponent } from './multi-check-combo.component';
         SortColHeaderComponent,
         HtmlDisplayComboComponent,
         MultiCheckComboComponent,
+        TreeViewComponent,
+        TreeComboComponent,
         OrderByPipe
     ],
     exports: [
@@ -24,6 +28,7 @@ import { MultiCheckComboComponent } from './multi-check-combo.component';
         SortColHeaderComponent,
         HtmlDisplayComboComponent,
         MultiCheckComboComponent,
+        TreeComboComponent,
         OrderByPipe,
         CommonModule,
         FormsModule

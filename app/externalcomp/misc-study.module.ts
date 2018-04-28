@@ -8,8 +8,7 @@ import { AdBannerComponent } from './ad-banner.component'
 import { HeroJobAdComponent } from './hero-job-ad.component';
 import { HeroProfileComponent } from './hero-profile.component';
 import { AdService } from './ad.service';
-import { TreeViewComponent } from './tree-view.component';
-import { TreeDataService } from './tree-data.service';
+import { TreeDataService } from '../services/tree-data.service';
 import { MultiExternComponent } from './multi-external.component';
 import { MyTabsComponent } from './my-tabs.component';
 import { MyTabComponent } from './my-tab.component';
@@ -27,7 +26,6 @@ import { PickerWidgetsComponent } from './picker-widgets.component';
         AdBannerComponent,
         HeroJobAdComponent,
         HeroProfileComponent,
-        TreeViewComponent,
         MultiExternComponent,
         MyTabsComponent,
         MyTabComponent,

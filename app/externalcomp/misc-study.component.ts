@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdItem } from '../shared/models/ad-item';
 import { AdService } from './ad.service'
-import { TreeDataService } from './tree-data.service';
+import { TreeDataService } from '../services/tree-data.service';
 import { TreeNode } from '../shared/models/tree-node';
 
 @Component({ 
