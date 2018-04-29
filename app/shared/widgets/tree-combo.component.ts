@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { TreeViewComponent } from './tree-view.component';
 import { TreeNode } from '../models/tree-node';
 
@@ -33,7 +33,9 @@ import { TreeNode } from '../models/tree-node';
 export class TreeComboComponent implements AfterViewInit {
     public treeData: TreeNode= new TreeNode(0, "Default Root");
     public itemClicked: EventEmitter<any>= new EventEmitter();
-    @ViewChild(TreeViewComponent) treeViewCtrl: TreeViewComponent;
+    @ViewChild(TreeViewComponent) private treeViewCtrl: TreeViewComponent;
+    //https://stackoverflow.com/questions/44047713/angular-2-how-to-get-htmlelement-elementref-of-child-component-using-templat
+    @ViewChild(TreeViewComponent, { read: ElementRef }) private treeViewElm: ElementRef;
 
     listDisplay: string= "none";
     placeholder: string= "Select a value";
@@ -46,6 +48,10 @@ export class TreeComboComponent implements AfterViewInit {
             me.listDisplay= "none";
             me.changeDetector.detectChanges();
         });
+        this.treeViewElm.nativeElement.addEventListener('click', function() {
+            window.event.stopPropagation();
+            window.event.preventDefault();
+        });
     }
 
     toggleList(evt) {
@@ -55,8 +61,6 @@ export class TreeComboComponent implements AfterViewInit {
     }
 
     treeNodeClicked(node) {
-        window.event.stopPropagation();
-        window.event.preventDefault();
         this.updateDisplayText();
     }
 

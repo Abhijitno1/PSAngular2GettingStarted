@@ -25,7 +25,7 @@
 <div class="tree" *ngIf="node && node.children.length && node.isExpanded">
     <ul class="nav nav-pills nav-stacked">
         <li class="presentation" *ngFor="let child of node.children">
-            <tree-view [node]="child"></tree-view>
+            <tree-view [node]="child" (itemClicked)="childNodeClicked(child)"></tree-view>
         </li>
     </ul>
 </div>

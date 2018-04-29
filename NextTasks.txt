@@ -24,7 +24,9 @@ next exercise
     https://stackoverflow.com/questions/30623825/how-to-use-jquery-with-angular
 
 treeview issues
-popup closes on child item-click
+popup closes on child item-click -- resolved
+child node click is not handled -- resolved
+initial setting of displaytext
 getselectedvlaues enhancement to two way binding
 
 multicheckcombo issue - get checkednodes property is called in endless loop.

@@ -71,4 +71,9 @@ export class TreeViewComponent {
         }
         this.itemClicked.emit(this.node);
     }
+    
+    //Pass on the child node click event to parent
+    childNodeClicked(childNode: TreeNode) {
+        this.itemClicked.emit(childNode);
+    }
 }
