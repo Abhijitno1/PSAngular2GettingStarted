@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter, ChangeDetectorRef,
+    ViewChild, ElementRef } from '@angular/core';
 import { TreeViewComponent } from './tree-view.component';
 import { TreeNode } from '../models/tree-node';
 
@@ -44,6 +45,7 @@ export class TreeComboComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         var me= this;
+        me.updateDisplayText();
         document.addEventListener('click', function() {
             me.listDisplay= "none";
             me.changeDetector.detectChanges();
@@ -68,9 +70,11 @@ export class TreeComboComponent implements AfterViewInit {
         if (!this.treeData || !this.treeViewCtrl) return [];
         return this.treeViewCtrl.getCheckedValues();
     }
-    /*private set selectedItems(values: number[]) {
-        this.treeViewCtrl.CheckedValues= values;
-    }*/
+    public setSelectedItems(values: number[]) {
+        this.treeViewCtrl.setCheckedValues(values);
+        this.updateDisplayText();
+    }
+
     private updateDisplayText() {
         //Converting displayText to property helps to automatically update it when selected items collection changes
         let selItems= this.getSelectedItems();

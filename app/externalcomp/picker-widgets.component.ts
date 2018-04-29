@@ -36,8 +36,11 @@ import { TreeNode } from '../shared/models/tree-node';
             <h4>Multiselect Tree Picker with checkbox</h4>
             <p>
                 <button class="btn btn-info" (click)="getSelectedTreeValues()">Get Selected Values</button>
+                <button class="btn btn-info" (click)="clearSelectedTreeValues()">Clear Selected Values</button>
             </p>
-            <tree-combo [treeData]="treeData"></tree-combo>
+            <tree-combo #treeCombo [treeData]="treeData"></tree-combo>
+            <!--Below treecombo methods cannot be used in interpolation-->
+            <!--span>selected items: {{treeCombo.getSelectedItems()}}</span-->
         </div>
     `
 })
@@ -73,5 +76,8 @@ export class PickerWidgetsComponent implements OnInit {
     getSelectedTreeValues() {
         var selItems = this.treePicker.getSelectedItems();
         alert('Selected values: ' + (selItems.length>0? selItems.join(','): 'none'));
+    }
+    clearSelectedTreeValues() {
+        this.treePicker.setSelectedItems([]);
     }
 }

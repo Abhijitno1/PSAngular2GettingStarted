@@ -34,16 +34,15 @@ export class TreeViewComponent {
         return checkedNodes;
     }
 
-    /*public set CheckedValues(values: number[]) {
-        values.forEach(val => {
-            this.cascadeNodeAction(this.node, (curNode)=> {
-                if (curNode.id==val) 
-                    curNode.isSelected= true;
-                else
-                    curNode.isSelected= false;
-            });
+    public setCheckedValues(values: number[]) {
+        this.cascadeNodeAction(this.node, (curNode)=> {
+            curNode.isSelected= false;
         });
-    }*/
+        this.cascadeNodeAction(this.node, (curNode)=> {
+            if (values.includes(curNode.id) || (curNode.parent && curNode.parent.isSelected==true))
+                curNode.isSelected= true;
+        });
+    }
 
     public cascadeNodeAction(node: TreeNode, action: (node: TreeNode)=>void) {
         action(node);
@@ -71,7 +70,7 @@ export class TreeViewComponent {
         }
         this.itemClicked.emit(this.node);
     }
-    
+
     //Pass on the child node click event to parent
     childNodeClicked(childNode: TreeNode) {
         this.itemClicked.emit(childNode);
