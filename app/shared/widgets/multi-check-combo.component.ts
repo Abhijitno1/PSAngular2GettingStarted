@@ -43,6 +43,7 @@ export class MultiCheckComboComponent implements AfterViewInit {
     placeholder: string= "Select a value";
     public get displayText() {
         //Converting displayText to property helps to automatically update it when selected items collection changes
+        //console.log('hit pe hit.. lagataar');
         let selItems= this.getSelectedItems();
         if (selItems.length > 0)
             return selItems.map(item=> item.text).join(', ');

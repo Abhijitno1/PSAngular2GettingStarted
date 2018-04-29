@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IListItem } from '../shared/models/list-item';
 import { IProduct } from '../shared/models/product';
-import { ProductsService} from '../products/products.service';
+import { ProductsService } from '../products/products.service';
+import { TreeDataService } from '../services/tree-data.service';
+import { TreeComboComponent } from '../shared/widgets/tree-combo.component';
+import { Tree } from '@angular/router/src/utils/tree';
+import { TreeNode } from '../shared/models/tree-node';
 
 //This is a container view to hold picker widget components
 
@@ -30,21 +34,21 @@ import { ProductsService} from '../products/products.service';
             <multi-check-combo #mulChkCbo [items]="subjects"></multi-check-combo>
             <hr />
             <h4>Multiselect Tree Picker with checkbox</h4>
-            <tree-combo></tree-combo>
+            <p>
+                <button class="btn btn-info" (click)="getSelectedTreeValues()">Get Selected Values</button>
+            </p>
+            <tree-combo [treeData]="treeData"></tree-combo>
         </div>
     `
 })
 export class PickerWidgetsComponent implements OnInit {
-    /*products: IListItem[]= [
-        { value: 'html', text: 'HTML' },
-        { value: 'css', text: 'CSS' },
-        { value: 'javascript', text: 'JavaScript' }
-    ];*/
     selectedProduct: IProduct;
     products: IProduct[]= [];
+    @ViewChild(TreeComboComponent) treePicker: TreeComboComponent;
+    treeData: TreeNode= new TreeNode(0, "Default Root");
     ajaxError: string= '';
 
-    constructor(private prodSvc: ProductsService) {}
+    constructor(private prodSvc: ProductsService,  private treedataSvc: TreeDataService) {}
 
     ngOnInit() {
         this.prodSvc.getProducts().subscribe(
@@ -52,6 +56,7 @@ export class PickerWidgetsComponent implements OnInit {
             error => this.ajaxError= error
             //, ()=> console.log('products count', this.products.length)
         );
+        this.treeData= this.treedataSvc.getTreeData()
     }
 
     subjects: IListItem[]= [
@@ -63,5 +68,10 @@ export class PickerWidgetsComponent implements OnInit {
     unselectSubjects() {
         this.subjects.forEach(sub => sub.isSelected= false);
         //console.debug(this.subjects);
+    }
+
+    getSelectedTreeValues() {
+        var selItems = this.treePicker.getSelectedItems();
+        alert('Selected values: ' + (selItems.length>0? selItems.join(','): 'none'));
     }
 }

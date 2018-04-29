@@ -1,9 +1,10 @@
-import { Component, AfterViewInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { IListItem } from '../models/list-item';
+import { Component, AfterViewInit, Input, Output, EventEmitter, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { TreeViewComponent } from './tree-view.component';
+import { TreeNode } from '../models/tree-node';
 
 @Component({ 
     selector: 'tree-combo',
-    inputs: ['items', 'placeholder'],
+    inputs: ['treeData', 'placeholder'],
     outputs: ['itemClicked'],
     template: `
         <div class="dropdown">
@@ -11,9 +12,9 @@ import { IListItem } from '../models/list-item';
                 {{displayText}}
                 <span class="caret"></span>
             </div>
-            <ul #dropdownList class="dropdown-menu combo-list" *ngIf="showList">
+            <ul #dropdownList class="dropdown-menu combo-list" [style.display]="listDisplay">
                 <li>
-                    Here will reside the treeview control
+                    <tree-view [node]="treeData" (itemClicked)="treeNodeClicked($event)"></tree-view> 
                 </li>
             </ul>
         </div>
@@ -25,38 +26,24 @@ import { IListItem } from '../models/list-item';
             border: 1px solid rgba(0, 0, 0, 0.15);
             border-radius: 4px;
             padding: 3px 20px;
-        }`,
-        `.dropdown .dropdown-menu.combo-list {
-            display: block;
         }`
         /*,'.caret { float: right; padding-top: 5px; }'*/
     ]
 })
 export class TreeComboComponent implements AfterViewInit {
-    public items: IListItem[]= [];
+    public treeData: TreeNode= new TreeNode(0, "Default Root");
     public itemClicked: EventEmitter<any>= new EventEmitter();
+    @ViewChild(TreeViewComponent) treeViewCtrl: TreeViewComponent;
 
-    showList: boolean= false;
+    listDisplay: string= "none";
     placeholder: string= "Select a value";
-    public get displayText() {
-        //Converting displayText to property helps to automatically update it when selected items collection changes
-        let selItems= this.getSelectedItems();
-        if (selItems.length > 0)
-            return selItems.map(item=> item.text).join(', ');
-        else
-            return this.placeholder;
-    }
-
-    public get selectedItems(): IListItem[] {
-        return this.getSelectedItems();
-    }
-
+    displayText: string= this.placeholder;
     constructor(private changeDetector: ChangeDetectorRef) {}
 
     ngAfterViewInit() {
         var me= this;
         document.addEventListener('click', function() {
-            me.showList= false;
+            me.listDisplay= "none";
             me.changeDetector.detectChanges();
         });
     }
@@ -64,18 +51,28 @@ export class TreeComboComponent implements AfterViewInit {
     toggleList(evt) {
         evt.stopPropagation();
         evt.preventDefault();
-        this.showList= !this.showList;
+        this.listDisplay= this.listDisplay=='none'? 'block': 'none';
     }
 
-    private toggleSelect(item: any, evt): void {
-        item.isSelected = !item.isSelected;
-        this.itemClicked.emit(item);
-        evt.stopPropagation();
-        evt.preventDefault();
+    treeNodeClicked(node) {
+        window.event.stopPropagation();
+        window.event.preventDefault();
+        this.updateDisplayText();
     }
 
-    private getSelectedItems(): IListItem[] {
-        if (!this.items) return [];
-        return this.items.filter(item => item.isSelected==true);
+    public getSelectedItems(): number[] {
+        if (!this.treeData || !this.treeViewCtrl) return [];
+        return this.treeViewCtrl.getCheckedValues();
+    }
+    /*private set selectedItems(values: number[]) {
+        this.treeViewCtrl.CheckedValues= values;
+    }*/
+    private updateDisplayText() {
+        //Converting displayText to property helps to automatically update it when selected items collection changes
+        let selItems= this.getSelectedItems();
+        if (selItems.length > 0)
+            this.displayText= selItems.join(', ');
+        else
+        this.displayText= this.placeholder;
     }
 }

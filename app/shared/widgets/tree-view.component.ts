@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter } from '@angular/core';
 import { TreeNode } from '../models/tree-node';
 
 //https://stackoverflow.com/questions/37746516/use-component-in-itself-recursively-to-create-a-tree
 @Component({
     selector: 'tree-view',
+    outputs: ['itemClicked'],
     templateUrl: './app/shared/widgets/tree-view.component.html',
     styles: [`.tree {
                 margin-left: 20px;
@@ -12,6 +13,7 @@ import { TreeNode } from '../models/tree-node';
 })
 export class TreeViewComponent {
     @Input() node: TreeNode;
+    public itemClicked: EventEmitter<any>= new EventEmitter<any>();
 
     public expandOrCollapseAll(state: string) {
         switch (state) {
@@ -24,7 +26,26 @@ export class TreeViewComponent {
         }
     }
 
-    private cascadeNodeAction(node: TreeNode, action: (node: TreeNode)=>void) {
+    public getCheckedValues(): number[] {
+        var checkedNodes: number[]= [];
+        this.cascadeNodeAction(this.node, (curNode)=> {
+            if (curNode.isSelected==true) checkedNodes.push(curNode.id);
+        });
+        return checkedNodes;
+    }
+
+    /*public set CheckedValues(values: number[]) {
+        values.forEach(val => {
+            this.cascadeNodeAction(this.node, (curNode)=> {
+                if (curNode.id==val) 
+                    curNode.isSelected= true;
+                else
+                    curNode.isSelected= false;
+            });
+        });
+    }*/
+
+    public cascadeNodeAction(node: TreeNode, action: (node: TreeNode)=>void) {
         action(node);
         node.children.forEach(child=> this.cascadeNodeAction(child, action));
     }
@@ -48,5 +69,6 @@ export class TreeViewComponent {
                 }
                 break;
         }
+        this.itemClicked.emit(this.node);
     }
 }

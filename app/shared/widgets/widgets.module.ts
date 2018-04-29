@@ -28,6 +28,7 @@ import { TreeComboComponent } from './tree-combo.component';
         SortColHeaderComponent,
         HtmlDisplayComboComponent,
         MultiCheckComboComponent,
+        TreeViewComponent,
         TreeComboComponent,
         OrderByPipe,
         CommonModule,
