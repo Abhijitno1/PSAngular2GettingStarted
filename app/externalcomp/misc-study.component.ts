@@ -9,7 +9,7 @@ import { TreeNode } from '../shared/models/tree-node';
     template: `
         <h3>Miscelleneous External Study Components</h3>
         <p>Select a Year <select><option *range="[2010, 2020]; let num" [value]="num">{{num}}</option></select></p>
-        <p><span [appHighlight]="highlightColor">This text should be highlighted on hover</span></p>
+        <p><span [appHighlight]="highlightColor" textColor="red">This text should be highlighted on hover</span></p>
         <p>
             <button (click)="coolAlert.open()">Propose Now</button> 
             <cool-alert title="Propose" #coolAlert (modalClosed)="tellResponse($event)">Do you love me?</cool-alert>
@@ -28,7 +28,7 @@ import { TreeNode } from '../shared/models/tree-node';
     `
 })
 export class MiscStudyComponent implements OnInit {
-    highlightColor: string= 'Orange';
+    highlightColor: string= 'silver';
     ads: AdItem[]= [];
     treeData: TreeNode;
 
