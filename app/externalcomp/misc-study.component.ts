@@ -12,7 +12,7 @@ import { TreeNode } from '../shared/models/tree-node';
         <p><span [appHighlight]="highlightColor" textColor="red">This text should be highlighted on hover</span></p>
         <p>
             <button (click)="coolAlert.open()">Propose Now</button> 
-            <cool-alert title="Propose" #coolAlert (modalClosed)="tellResponse($event)">Do you love me?</cool-alert>
+            <cool-alert heading="Propose" #coolAlert (modalClosed)="tellResponse($event)">Do you love me?</cool-alert>
         </p>
         <p><ad-banner [ads]="ads"></ad-banner></p>
         <div>
@@ -25,6 +25,15 @@ import { TreeNode } from '../shared/models/tree-node';
                 </div>
             <div>
         </div>
+        <my-accordian>
+            <my-pane heading="Pane 1" selected="true">
+                Content of pane 1
+                <p><code>Check later why custom components do not work inside accordian pane</code></p>
+            </my-pane>
+            <my-pane heading="Pane 2">
+                Content of pane 2
+            </my-pane>
+        </my-accordian>
     `
 })
 export class MiscStudyComponent implements OnInit {

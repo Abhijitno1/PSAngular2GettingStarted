@@ -8,7 +8,9 @@ import { HtmlDisplayComboComponent } from './html-display-combo.component';
 import { MultiCheckComboComponent } from './multi-check-combo.component';
 import { TreeViewComponent } from './tree-view.component';
 import { TreeComboComponent } from './tree-combo.component';
-import { CoolAlertComponent } from './cool-alert.component'
+import { CoolAlertComponent } from './cool-alert.component';
+import { MyAccordianComponent } from './my-accordian.component';
+import { MyPaneComponent } from './my-pane.component';
 
 @NgModule({
     imports: [
@@ -23,6 +25,8 @@ import { CoolAlertComponent } from './cool-alert.component'
         TreeViewComponent,
         TreeComboComponent,
         CoolAlertComponent,
+        MyAccordianComponent,
+        MyPaneComponent,
         OrderByPipe
     ],
     exports: [
@@ -33,6 +37,8 @@ import { CoolAlertComponent } from './cool-alert.component'
         TreeViewComponent,
         TreeComboComponent,
         CoolAlertComponent,
+        MyAccordianComponent,
+        MyPaneComponent,
         OrderByPipe,
         CommonModule,
         FormsModule

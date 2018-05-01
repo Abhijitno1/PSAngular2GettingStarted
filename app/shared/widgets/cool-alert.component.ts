@@ -2,7 +2,7 @@ import { Component, Input, ElementRef, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'cool-alert',
-    inputs: ['title'],
+    inputs: ['title:heading'],
     outputs: ['modalClosed'],
     template: `
         <div class="modal fade" role="dialog">
@@ -10,7 +10,7 @@ import { Component, Input, ElementRef, EventEmitter } from '@angular/core';
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" (click)="close(false)">&times;</button>
+                        <button type="button" class="close" title="close" (click)="close(false)">&times;</button>
                         <h4 class="modal-title">{{title}}</h4>
                     </div>
                     <div class="modal-body">
