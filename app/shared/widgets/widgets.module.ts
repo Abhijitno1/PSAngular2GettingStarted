@@ -8,6 +8,7 @@ import { HtmlDisplayComboComponent } from './html-display-combo.component';
 import { MultiCheckComboComponent } from './multi-check-combo.component';
 import { TreeViewComponent } from './tree-view.component';
 import { TreeComboComponent } from './tree-combo.component';
+import { CoolAlertComponent } from './cool-alert.component'
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { TreeComboComponent } from './tree-combo.component';
         MultiCheckComboComponent,
         TreeViewComponent,
         TreeComboComponent,
+        CoolAlertComponent,
         OrderByPipe
     ],
     exports: [
@@ -30,6 +32,7 @@ import { TreeComboComponent } from './tree-combo.component';
         MultiCheckComboComponent,
         TreeViewComponent,
         TreeComboComponent,
+        CoolAlertComponent,
         OrderByPipe,
         CommonModule,
         FormsModule

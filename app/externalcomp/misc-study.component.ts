@@ -10,6 +10,10 @@ import { TreeNode } from '../shared/models/tree-node';
         <h3>Miscelleneous External Study Components</h3>
         <p>Select a Year <select><option *range="[2010, 2020]; let num" [value]="num">{{num}}</option></select></p>
         <p><span [appHighlight]="highlightColor">This text should be highlighted on hover</span></p>
+        <p>
+            <button (click)="coolAlert.open()">Propose Now</button> 
+            <cool-alert title="Propose" #coolAlert (modalClosed)="tellResponse($event)">Do you love me?</cool-alert>
+        </p>
         <p><ad-banner [ads]="ads"></ad-banner></p>
         <div>
             <p> <tree-view #treeView [node]="treeData"></tree-view> </p>
@@ -47,5 +51,12 @@ export class MiscStudyComponent implements OnInit {
             curCount= this.getCount4Node(element, curCount);
         });
         return curCount;       
+    }
+
+    tellResponse(yesClicked) {
+        if (yesClicked)
+            alert('Your partner agreed');
+        else
+            alert('Your partner refused');
     }
 }
