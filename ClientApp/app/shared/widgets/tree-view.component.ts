@@ -39,8 +39,9 @@ export class TreeViewComponent {
             curNode.isSelected= false;
         });
         this.cascadeNodeAction(this.node, (curNode)=> {
-            if (values.includes(curNode.id) || (curNode.parent && curNode.parent.isSelected==true))
+            if (values.indexOf(curNode.id) > -1 || (curNode.parent && curNode.parent.isSelected==true)) {
                 curNode.isSelected= true;
+            }
         });
     }
 
